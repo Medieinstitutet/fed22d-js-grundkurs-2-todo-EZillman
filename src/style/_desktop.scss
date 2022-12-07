@@ -1,0 +1,19 @@
+:root {
+    background-color: black;
+}
+
+//Main
+
+//To do blocks
+article {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 15rem;
+    min-height: 6rem;
+}
+
+//Buttons
+.check-btn, .delete-btn{
+    height: 4rem;
+    width: 4rem;
+}
