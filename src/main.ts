@@ -10,14 +10,14 @@ import toDos from './exampleArray';
 
 // Move variables to exampleArray?
 
-const list = document.querySelector('#thingsToDo');
+// const list = document.querySelector('#thingsToDo');
 
-const addToDoBtn = document.querySelector('#addToDoBtn');
+// const addToDoBtn = document.querySelector('#addToDoBtn');
 
-const newToDoName = document.querySelector('#newToDoField');
+// const newToDoName = document.querySelector('#newToDoField');
 
 // HANDLEDNING
-function addNewToDo() {
+/* function addNewToDo() {
   toDos?.push(newToDoName?.value);
   console.log(list);
 }
@@ -37,4 +37,4 @@ function printToDo() {
 
 printToDo();
 
-addToDoBtn?.addEventListener('click', addNewToDo);
+addToDoBtn?.addEventListener('click', addNewToDo); */
