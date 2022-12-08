@@ -6,7 +6,7 @@ import './style/style.scss';
 // import { shuffle } from './utils';
 
 // I denna fil har vi lagrat vår "data"
-import toDos from './exampleArray';
+// import toDos from './exampleArray';
 
 // Move variables to exampleArray?
 
