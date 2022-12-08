@@ -1,24 +1,56 @@
 <!DOCTYPE html>
-<html lang="en"> <!-- TODO: glöm ej att byta språk här -->
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/ico" href="/fed22d-js-grundkurs-2-todo-EZillman/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projekt</title>
-    <script type="module" crossorigin src="/fed22d-js-grundkurs-2-todo-EZillman/assets/index.288365a0.js"></script>
-    <link rel="stylesheet" href="/fed22d-js-grundkurs-2-todo-EZillman/assets/index.09951560.css">
-  </head>
-  <body>
-    <main>
-      <div class="app" id="app"></div> <!-- TODO: går bra att radera -->
-      <!-- TODO: skriv din kod här, innan script-taggen -->
-    </main>
+<html lang="en">
+<!-- TODO: glöm ej att byta språk här -->
 
-    <!-- TODO
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/ico" href="/fed22d-js-grundkurs-2-todo-EZillman/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projekt</title>
+  <script type="module" crossorigin src="/fed22d-js-grundkurs-2-todo-EZillman/assets/index.74d163d3.js"></script>
+  <link rel="stylesheet" href="/fed22d-js-grundkurs-2-todo-EZillman/assets/index.d3731449.css">
+</head>
+
+<body>
+  <header>
+    To Do List
+  </header>
+  <nav>
+    <label>
+      <input type="text" id="newToDoField"></input>
+    </label>
+    <button id="addToDoBtn" class="add-btn">Add</button>
+
+    <select>
+      <option value="Sort by" selected disabled>Sort By</option>
+      <option value="Deadline">Deadline</option>
+      <option value="Name">Name</option>
+      <option value="Added">Added</option>
+    </select>
+  </nav>
+
+  <main>
+    <ul id="thingsToDo">
+      <li>
+        <button class="check-btn">Check</button>
+        <p class="to-do" id="toDo">To-do text</p>
+        <p class="date-added">Date added</p>
+        <label class="deadline">Deadline
+          <input type="date">
+        </label>
+        <button class="delete-btn">Delete</button>
+      </li>
+    </ul>
+  </main>
+
+
+
+  <!-- TODO
     - Validera HTML (kopiera den renderade HTML-koden): https://validator.w3.org/#validate_by_input
     - Kontrollera tillgänglighet: https://www.a11yproject.com/checklist/ & Chrome Lighthouse/Firefox Accessibility Tools
     - Validera genererade CSS: https://jigsaw.w3.org/css-validator/#validate_by_input
     -->
-    
-  </body>
+  
+</body>
+
 </html>
