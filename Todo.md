@@ -12,9 +12,9 @@
 
 ## Flöde
 
-- Klicka på +Add för att lägga till todo
 - Skriv namnet på todo:n
-- Lägg till todo:n och välj datum för deadline
+- Klicka på Add för att lägga till todo
+- Välj datum för deadline i todo:n
 - Namnet på todo:n och datumet todo:n las till ska synas på todo:n
 - Sortering av flera todo:s, deadline, namn, datum
 - Checka todo:n
