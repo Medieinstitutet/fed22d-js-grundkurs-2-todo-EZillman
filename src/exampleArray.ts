@@ -1,7 +1,6 @@
-const exampleCards = [
-  'Spades Ace',
-  'Spades 2',
-  'Spades 3',
+const toDos = [
+  'Work on project',
+  'Bake',
 ];
 
-export default exampleCards;
+export default toDos;

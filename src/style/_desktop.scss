@@ -1,0 +1,18 @@
+:root {
+    background-color: black;
+}
+
+//Main
+
+//To do blocks
+li {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 10rem;
+}
+
+//Buttons
+.check-btn, .delete-btn{
+    height: 4rem;
+    width: 4rem;
+}
