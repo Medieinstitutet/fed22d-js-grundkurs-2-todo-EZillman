@@ -16,25 +16,37 @@ const addToDoBtn = document.querySelector('#addToDoBtn');
 
 const newToDoName = document.querySelector('#newToDoField');
 
-// HANDLEDNING
+printToDo();
+
 function addNewToDo() {
-  toDos?.push(newToDoName?.value);
-  console.log(list);
+  if (newToDoName.value.length === 0) {
+    return;
+  }
+  if (toDos.indexOf(newToDoName.value) === -1) {
+    toDos.push(newToDoName.value);
+    printToDo();
+  }
 }
 
 // Move function to utils when done
+// Adding todo:s by writing in the input field and clicking on the "add" button
 function printToDo() {
-  list?.innerHTML = '';
+  list.innerHTML = '';
 
   for (let i = 0; i < toDos.length; i++) {
     const toDoName = toDos[i];
     const toDoNode = document.createElement('li');
     const toDoTextNode = document.createTextNode(toDoName);
     toDoNode.appendChild(toDoTextNode);
-    list?.appendChild(toDoNode);
+
+
+    /*const checkToDoBtn = document.createElement('button');
+    checkToDoBtn.classList.add('check-btn');
+    toDoNode.appendChild('checkToDoBtn');*/
+
+    list.appendChild(toDoNode);
   }
 }
 
-printToDo();
-
-addToDoBtn?.addEventListener('click', addNewToDo);
+addToDoBtn.addEventListener('click', addNewToDo); 
+ 
