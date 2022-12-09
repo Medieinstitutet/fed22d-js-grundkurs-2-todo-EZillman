@@ -36,13 +36,21 @@ function printToDo() {
   for (let i = 0; i < toDos.length; i++) {
     const toDoName = toDos[i];
     const toDoNode = document.createElement('li');
-    const toDoTextNode = document.createTextNode(toDoName);
+    toDoNode.classList.add('to-do-item');
+    const toDoTextNode = document.createTextNode(toDoName); // TODO: Move the textnode so the check button is to the left
     toDoNode.appendChild(toDoTextNode);
 
-
-    /*const checkToDoBtn = document.createElement('button');
+    const checkToDoBtn = document.createElement('button');
+    const checkToDoBtnText = document.createTextNode('Check');
+    checkToDoBtn.appendChild(checkToDoBtnText);
     checkToDoBtn.classList.add('check-btn');
-    toDoNode.appendChild('checkToDoBtn');*/
+    toDoNode.appendChild(checkToDoBtn);        
+
+    const deleteToDoBtn = document.createElement('button');
+    const deleteToDoBtnText = document.createTextNode('Delete');
+    deleteToDoBtn.appendChild(deleteToDoBtnText);
+    deleteToDoBtn.classList.add('delete-btn');
+    toDoNode.appendChild(deleteToDoBtn);
 
     list.appendChild(toDoNode);
   }

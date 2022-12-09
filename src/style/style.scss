@@ -31,7 +31,7 @@ nav {
 //Main
 
 //To do blocks
-li {
+.to-do-item {
   display: grid;
   grid-template-areas: 'left center right';
   grid-template-columns: 0.3fr 1.3fr 0.1fr;
@@ -42,10 +42,7 @@ li {
   border-radius: 2rem;
 }
 
-.to-do {
-  grid-area: center;
-  padding: 0.5rem
-}
+
 
 .date-added {
   padding: 0.5rem;
