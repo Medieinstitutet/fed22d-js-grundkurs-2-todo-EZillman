@@ -6,7 +6,7 @@ import './style/style.scss';
 // import { shuffle } from './utils';
 
 // I denna fil har vi lagrat vår "data"
-import toDos from './exampleArray';
+//import toDos from './exampleArray';
 
 // Move variables to exampleArray?
 
@@ -15,6 +15,13 @@ const list = document.querySelector('#thingsToDo');
 const addToDoBtn = document.querySelector('#addToDoBtn');
 
 const newToDoName = document.querySelector('#newToDoField');
+
+// Browser thinks this is a const unless it's in the main file
+let toDos = [
+  'Work on project',
+  'Decorate christmas tree',
+];
+
 
 printToDo();
 
@@ -28,7 +35,7 @@ function addNewToDo() {
   }
 }
 
-// Move function to utils when done
+// TODO: Move function to utils when done
 // Adding todo:s by writing in the input field and clicking on the "add" button
 function printToDo() {
   list.innerHTML = '';
@@ -56,5 +63,11 @@ function printToDo() {
   }
 }
 
+
+function loadToDos() {
+  toDos = JSON.parse(localStorage.getItem('toDos')) || [];
+}
+
 addToDoBtn.addEventListener('click', addNewToDo); 
- 
+
+window.addEventListener('load', loadToDos);

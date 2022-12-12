@@ -1,6 +1,6 @@
-const toDos = [
+let toDos = [
   'Work on project',
-  'Bake',
+  'Decorate christmas tree',
 ];
 
-export default toDos;
+//export default toDos;
