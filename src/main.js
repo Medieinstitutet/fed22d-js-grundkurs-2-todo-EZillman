@@ -16,6 +16,11 @@ const addToDoBtn = document.querySelector('#addToDoBtn');
 
 const newToDoName = document.querySelector('#newToDoField');
 
+
+
+//const dateCreated = new Date().getTime();
+
+
 // Browser thinks this is a const unless it's in the main file
 let toDos = [
   'Work on project',
@@ -66,6 +71,13 @@ function printToDo() {
 
 function loadToDos() {
   toDos = JSON.parse(localStorage.getItem('toDos')) || [];
+  
+  /*const toDo = {
+    content: e.target.elements.content
+    createdAt: new Date().getTime()
+  }*/
+
+  localStorage.setItem('toDos', JSON.stringify(toDos));
 }
 
 addToDoBtn.addEventListener('click', addNewToDo); 
