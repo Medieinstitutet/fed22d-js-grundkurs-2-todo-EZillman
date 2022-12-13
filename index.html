@@ -13,10 +13,12 @@
     <h1>To Do List</h1>
   </header>
   <nav>
-    <label>
-      <input type="text" name="toDoContent" id="newToDoField"></input>
-    </label>
-    <button id="addToDoBtn" class="add-btn">Add</button>
+    <form id="newToDoForm">
+      <label>
+        <input type="text" name="toDoContent" id="newToDoField"></input>
+      </label>
+      <button type="submit" id="addToDoBtn" class="add-btn">Add</button>
+    </form>
 
     <select>
       <option value="Sort by" selected disabled>Sort By</option>
@@ -28,12 +30,14 @@
 
   <main>
     <ul id="thingsToDo">
-      <li class="to-do-item">
-        <button class="check-btn">Check</button>
+      <li id="toDo" class="to-do-item">
+        <button id="checkBtn" class="check-btn">Check</button>
+        <input type="text" id="toDoText" class="to-do-text"></input>
         <label class="deadline">Deadline
           <input type="date">
         </label>
-        <button class="delete-btn">Delete</button>
+        <button id="editBtn" class="edit-btn">Edit</button>
+        <button id="deleteBtn" class="delete-btn">Delete</button>
       </li>
     </ul>
   </main>
