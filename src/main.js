@@ -64,6 +64,7 @@ function printToDo() {
 
 //Variables
 const newToDoForm = document.querySelector('#newToDoForm');
+const newToDoField = document.querySelector('#newToDoField');
 
 let toDos = [
   'Work on project',
@@ -73,34 +74,33 @@ let toDos = [
 // Load todos from local storage
 function loadToDos() {
   toDos = JSON.parse(localStorage.getItem('toDos')) || [];
-  
-  newToDo()
   displayToDos()
-
   localStorage.setItem('toDos', JSON.stringify(toDos));
 }
 
 
-
-
 // Creates new todos
 function newToDo(e) {
-  if (e !== undefined) {
+  if (newToDoField.value.length === 0) {
     e.preventDefault();
-    const toDo = {
-      content: e.target.elements.toDoContent.value,
-      done: false,
-      createdAt: new Date().getTime()
-    }
-
-    toDos.push(toDo);
-    displayToDos()
+    return;
   }
+    if (e !== undefined) {
+      e.preventDefault();
+      const toDo = {
+        content: e.target.elements.toDoContent.value,
+        complete: false,
+        createdAt: new Date().getTime()
+      }
+      toDos.push(toDo);
+      displayToDos()
+    }
 }
 
 
-// Makes the todos show up
+// Makes the todos show up 
 function displayToDos() {
+  localStorage.setItem('toDos', JSON.stringify(toDos));
   const toDoList = document.querySelector('#thingsToDo');
   toDoList.innerHTML = '';
 
@@ -116,7 +116,7 @@ function displayToDos() {
     const deleteBtn = document.createElement('button');
 
     checkBtn.type = 'checkbox';
-    checkBtn.checked = toDo.done;
+    checkBtn.checked = toDo.complete;
     checkLabel.classList.add('check-label');
     checkBtn.classList.add('check-btn');
     checkBtnStyle.classList.add('check-btn-style');
@@ -143,12 +143,33 @@ function displayToDos() {
     toDoItem.appendChild(deleteBtn);
 
     toDoList.appendChild(toDoItem);
-  })
 
+    // Checks todo if input checkbox is checked
+    // TODO: The classlist 'complete' disappears when reloading the page, fix
+    function toDoChecked(e) {
+      toDo.complete = e.target.checked;
+      localStorage.setItem('toDos', JSON.stringify(toDos));
+    
+      if (toDo.complete) {
+        toDoItem.classList.add('complete');
+      } else {
+        toDoItem.classList.remove('complete');
+      }
+    } 
+    
+    // Deletes todo when clicking on 'delete'
+    function deleteToDo() {
+      toDos = toDos.filter(test => test !== toDo);
+      localStorage.setItem('toDos', JSON.stringify(toDos));
+      displayToDos();
+    }
+    // CheckBtn and deleteBtn only exists in this function,
+    // the eventlisteners will not work if moved outside
+    checkBtn.addEventListener('click', toDoChecked)
+    deleteBtn.addEventListener('click', deleteToDo);
+  })
 }
 
-
-//addToDoBtn.addEventListener('click', addNewToDo); 
 
 window.addEventListener('load', loadToDos);
 newToDoForm.addEventListener('submit', newToDo); 
