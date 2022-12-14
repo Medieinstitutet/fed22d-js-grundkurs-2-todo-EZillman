@@ -31,10 +31,14 @@ nav {
 //Main
 
 //To do blocks
+.things-to-do {
+  padding: 0;
+}
+
 .to-do-item {
   display: grid;
-  grid-template-areas: 'left center right';
-  grid-template-columns: 0.3fr 1.3fr 0.1fr;
+  grid-template-areas: 'left center center2 right';
+  grid-template-columns: 0.3fr 1.3fr 0.12fr 0.12fr;
   background-color: rgb(42 45 45);
   margin: 0.5rem;
   padding: 0.5rem;
@@ -56,10 +60,35 @@ nav {
   margin-right: 2rem;
 }
 
+.check-label {
+  display: grid;
+  grid-area: left;
+}
 
 .check-btn {
+  grid-area: left;
+  opacity: 50;
+  border: 0.5rem;
+  height: 3.5rem;
+  width: 3.5rem;
+  cursor: pointer;
+}
+
+.check-btn-style {
+  grid-area: left;
+  display: block;
+  background-color: aliceblue;
   border-radius: 50%;
   border: 0.5rem;
+  height: 3.5rem;
+  width: 3.5rem;
+  cursor: pointer;
+}
+
+.edit-btn {
+  grid-area: center2;
+  border-radius: 50%;
+  border: 0;
   height: 3.5rem;
   width: 3.5rem;
 }

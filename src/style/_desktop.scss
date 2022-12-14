@@ -5,14 +5,15 @@
 //Main
 
 //To do blocks
-li {
+
+.to-do-item {
     display: flex;
     justify-content: space-between;
     margin: 0.5rem 10rem;
 }
 
 //Buttons
-.check-btn, .delete-btn{
+.check-btn, .check-btn-style, .delete-btn{
     height: 4rem;
     width: 4rem;
 }
