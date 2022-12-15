@@ -5,6 +5,14 @@
     background-position: 50%;
 }
 
+header {
+    background-color: #0a0527;
+}
+
+select {
+    height: 1.8rem;
+}
+
 //Main
 
 //To do blocks
@@ -20,7 +28,17 @@
     font-size: 1.5rem;
 }
 
+.deadline {
+    padding-top: 1rem;
+}
+
 //Buttons
+.add-btn{
+    margin-left: 0.2rem;
+    height: 2rem;
+    width: 4.5rem;
+}
+
 .check-btn, .check-btn-style, .delete-btn{
     height: 4rem;
     width: 4rem;
