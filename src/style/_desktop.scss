@@ -1,5 +1,8 @@
 :root {
-    background-color: black;
+    background-image: url('/public/desktop-background.jpg'); // From wallpapers.com
+    min-height: 100vh;
+    background-size: cover;
+    background-position: 50%;
 }
 
 //Main
@@ -12,8 +15,17 @@
     margin: 0.5rem 10rem;
 }
 
+.to-do-text {
+    padding-top: 1rem;
+    font-size: 1.5rem;
+}
+
 //Buttons
 .check-btn, .check-btn-style, .delete-btn{
     height: 4rem;
     width: 4rem;
+}
+
+.delete-btn {
+    font-size: 1rem;
 }

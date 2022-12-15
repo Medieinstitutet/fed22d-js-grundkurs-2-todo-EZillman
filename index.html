@@ -10,12 +10,15 @@
 
 <body>
   <header>
-    <h1>To Do List</h1>
+    <h1>Todo List</h1>
   </header>
   <nav>
     <form id="newToDoForm">
-      <label>
-        <input type="text" name="toDoContent" id="newToDoField"></input>
+      <label>Add todo
+        <input type="text" name="toDoContent" id="newToDoField" class="to-do-content" required></input>
+      </label><br>
+      <label class="deadline">Deadline
+        <input id="deadlineField" name="deadlineDate" type="date" required>
       </label>
       <button type="submit" id="addToDoBtn" class="add-btn">Add</button>
     </form>
@@ -24,7 +27,7 @@
       <option value="Sort by" selected disabled>Sort By</option>
       <option value="Deadline">Deadline</option>
       <option value="Name">Name</option>
-      <option value="Added">Added</option>
+      <option value="Added">Latest added</option>
     </select>
   </nav>
 
@@ -33,12 +36,10 @@
       <li id="toDo" class="to-do-item complete">
         <label class="check-label">
           <input type="checkbox" id="checkBtn" class="check-btn"></input>
-          <span class="check-btn-style"></span>
+          <span class="check-btn-style checked"></span>
         </label>
         <span id="toDoText" class="to-do-text"></span>
-        <label class="deadline">Deadline
-          <input type="date">
-        </label>
+        <span class="deadline">Deadline:</span>
         <button id="deleteBtn" class="delete-btn">Delete</button>
       </li>
     </ul>

@@ -5,8 +5,8 @@
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-weight: 400;
   color-scheme: light dark;
-  color: rgb(255 255 255 / 87%);
-  background: linear-gradient(90deg, rgba(45 0 50) 0%, rgba(0 40 52) 100%);
+  color: #d3d1d1de;
+  background-image: url('/public/mobile-background.jpg');
   font-synthesis: none;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
@@ -15,7 +15,7 @@
 }
 
 header {
-  background-color: rgb(48 0 52);
+  background-color: #300034;
   padding: 2rem;
   font-size: 2.5rem;
   text-align: center;
@@ -24,8 +24,13 @@ header {
 nav {
   display: flex;
   justify-content: center;
-  background-color: rgb(29 31 31);
+  background-color: #1d1f1f;
   padding: 1rem;
+  min-height: 8rem;
+}
+
+select {
+  height: fit-content;
 }
 
 //Main
@@ -38,19 +43,24 @@ nav {
 .to-do-item {
   display: grid;
   grid-template-areas: 'left center center2 right';
-  grid-template-columns: 0.3fr 1.3fr 0.12fr 0.12fr;
-  background-color: rgb(42 45 45);
+  grid-template-columns: 0.3fr 1.3fr 0.6fr 0.12fr;
+  background-color: #1d1f1f;
   margin: 0.5rem;
   padding: 0.5rem;
   min-height: fit-content;
-  border-radius: 2rem;
+  border-radius: 2rem;  
+  border: 0.1rem;
+  border-style: solid;
+  border-color: black;
+}
+
+.to-do-content {
+  margin-bottom: 1rem;
 }
 
 .complete {
-  background: linear-gradient(90deg, rgba(0 40 52) 0%, rgba(45 0 50) 100%);
-  border: 0.2rem;
-  border-style: solid;
-  border-color: black;
+  background-color: #2a2d2dd2;
+
 }
 
 .date-added {
@@ -58,7 +68,7 @@ nav {
 }
 
 .deadline {
-  padding: 0.5rem;
+  grid-area: center2;
 }
 
 //Buttons
@@ -73,11 +83,12 @@ nav {
   grid-area: left;
 }
 
+// How to be able to tab to checkbox if not visible?
 .check-btn {
   grid-area: left;
-  opacity: 50;
   height: 3.5rem;
   width: 3.5rem;
+  visibility: visible;
   cursor: pointer;
 }
 
@@ -85,6 +96,19 @@ nav {
   grid-area: left;
   display: block;
   background-color: aliceblue;
+  border-radius: 50%;
+  border: 0.5rem;
+  border-style: solid;
+  border-color: black;
+  height: 3.5rem;
+  width: 3.5rem;
+  cursor: pointer;
+}
+
+.checked {
+  grid-area: left;
+  display: block;
+  background-color: rgb(0 125 147);
   border-radius: 50%;
   border: 0.5rem;
   border-style: solid;
@@ -110,7 +134,9 @@ nav {
   border-color: black;
   height: 3.5rem;
   width: 3.5rem;
-  background-color: rgb(35 0 39);
+  padding-left: 0.3rem;
+  font-size: 0.8rem;
+  background-color: #230027;
   cursor: pointer;
 }
 

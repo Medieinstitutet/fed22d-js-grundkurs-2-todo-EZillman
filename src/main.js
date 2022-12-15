@@ -30,7 +30,6 @@ function addNewToDo() {
   }
 }
 
-// TODO: Move function to utils when done
 // Adding todo:s by writing in the input field and clicking on the "add" button
 function printToDo() {
   list.innerHTML = '';
@@ -39,7 +38,7 @@ function printToDo() {
     const toDoName = toDos[i];
     const toDoNode = document.createElement('li');
     toDoNode.classList.add('to-do-item');
-    const toDoTextNode = document.createTextNode(toDoName); // TODO: Move the textnode so the check button is to the left
+    const toDoTextNode = document.createTextNode(toDoName); 
     toDoNode.appendChild(toDoTextNode);
 
     const checkToDoBtn = document.createElement('button');
@@ -65,6 +64,7 @@ function printToDo() {
 //Variables
 const newToDoForm = document.querySelector('#newToDoForm');
 const newToDoField = document.querySelector('#newToDoField');
+const deadlineField = document.querySelector('#deadlineField');
 
 let toDos = [
   'Work on project',
@@ -78,10 +78,9 @@ function loadToDos() {
   localStorage.setItem('toDos', JSON.stringify(toDos));
 }
 
-
 // Creates new todos
 function newToDo(e) {
-  if (newToDoField.value.length === 0) {
+  if (newToDoField.value.length === 0 || deadlineField.value-length === 0) {
     e.preventDefault();
     return;
   }
@@ -90,7 +89,8 @@ function newToDo(e) {
       const toDo = {
         content: e.target.elements.toDoContent.value,
         complete: false,
-        createdAt: new Date().getTime()
+        createdAt: new Date().getTime(),
+        deadline: e.target.elements.deadlineDate.value
       }
       toDos.push(toDo);
       displayToDos()
@@ -112,7 +112,7 @@ function displayToDos() {
     const checkBtn = document.createElement('input');
     const checkBtnStyle = document.createElement('span');
     const toDoText = document.createElement('span');
-    const deadlineLabel = document.createElement('label');
+    const deadline = document.createElement('span');
     const deleteBtn = document.createElement('button');
 
     checkBtn.type = 'checkbox';
@@ -123,15 +123,13 @@ function displayToDos() {
   
 
     toDoText.classList.add('to-do-text');
-    deadlineLabel.classList.add('deadline');
+    deadline.classList.add('deadline');
     deleteBtn.classList.add('delete-btn');
 
     toDoText.innerHTML = `
     <span id="toDoText" class="to-do-text">${toDo.content}
     </span>`
-    deadlineLabel.innerHTML = `<label class="deadline">Deadline
-    <input type="date">
-    </label>`
+    deadline.innerHTML = `<span>Deadline: ${toDo.deadline}</span>`
     deleteBtn.innerHTML = 'Delete'
     
     toDoItem.appendChild(checkLabel);
@@ -139,7 +137,7 @@ function displayToDos() {
     checkLabel.appendChild(checkBtnStyle);
 
     toDoItem.appendChild(toDoText);
-    toDoItem.appendChild(deadlineLabel);
+    toDoItem.appendChild(deadline);
     toDoItem.appendChild(deleteBtn);
 
     toDoList.appendChild(toDoItem);
@@ -152,8 +150,10 @@ function displayToDos() {
     
       if (toDo.complete) {
         toDoItem.classList.add('complete');
+        checkBtnStyle.classList.add('checked');
       } else {
         toDoItem.classList.remove('complete');
+        checkBtnStyle.classList.remove('checked');
       }
     } 
     
