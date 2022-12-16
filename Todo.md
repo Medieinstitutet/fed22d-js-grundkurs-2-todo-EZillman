@@ -2,7 +2,7 @@
 
 - [X]Rita en wireframe
 - [X]Bygg en grund med html och css
-- Programmets flöde
+- [X]Programmets flöde
 - Skriv pseudo kod
 - Börja med ts/js
 
@@ -15,7 +15,7 @@
 - Skriv namnet på todo:n
 - Klicka på Add för att lägga till todo
 - Välj datum för deadline i todo:n
-- Namnet på todo:n och datumet todo:n las till ska synas på todo:n
+- Namnet på todo:n ska synas på todo:n
 - Sortering av flera todo:s, deadline, namn, datum
 - Checka todo:n
 - Ta bort todo:n
