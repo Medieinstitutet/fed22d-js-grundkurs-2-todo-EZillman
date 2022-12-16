@@ -120,7 +120,14 @@ function displayToDos() {
     checkLabel.classList.add('check-label');
     checkBtn.classList.add('check-btn');
     checkBtnStyle.classList.add('check-btn-style');
-  
+        
+    if (toDo.complete) {
+      toDoItem.classList.add('complete');
+      checkBtnStyle.classList.add('checked');
+    } else {
+      toDoItem.classList.remove('complete');
+      checkBtnStyle.classList.remove('checked');
+    }
 
     toDoText.classList.add('to-do-text');
     deadline.classList.add('deadline');
