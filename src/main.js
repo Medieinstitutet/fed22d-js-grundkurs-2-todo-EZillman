@@ -108,17 +108,19 @@ function displayToDos() {
     const toDoItem = document.createElement('li');
     toDoItem.classList.add('to-do-item');
 
-    const checkLabel = document.createElement('label');
+    const checkboxDiv = document.createElement('div');
     const checkBtn = document.createElement('input');
-    const checkBtnStyle = document.createElement('span');
+    const checkBtnStyle = document.createElement('label');
     const toDoText = document.createElement('span');
     const deadline = document.createElement('span');
     const deleteBtn = document.createElement('button');
 
     checkBtn.type = 'checkbox';
     checkBtn.checked = toDo.complete;
-    checkLabel.classList.add('check-label');
+    checkboxDiv.classList.add('checkbox');
     checkBtn.classList.add('check-btn');
+    checkBtn.setAttribute('id', 'checkBtn');
+    checkBtnStyle.htmlFor = 'checkBtn'
     checkBtnStyle.classList.add('check-btn-style');
         
     if (toDo.complete) {
@@ -139,9 +141,9 @@ function displayToDos() {
     deadline.innerHTML = `<span>Deadline: ${toDo.deadline}</span>`
     deleteBtn.innerHTML = 'Delete'
     
-    toDoItem.appendChild(checkLabel);
-    checkLabel.appendChild(checkBtn);
-    checkLabel.appendChild(checkBtnStyle);
+    toDoItem.appendChild(checkboxDiv);
+    checkboxDiv.appendChild(checkBtn);
+    checkboxDiv.appendChild(checkBtnStyle);
 
     toDoItem.appendChild(toDoText);
     toDoItem.appendChild(deadline);

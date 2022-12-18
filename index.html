@@ -34,10 +34,10 @@
   <main>
     <ul id="thingsToDo" class="things-to-do">
       <li id="toDo" class="to-do-item complete">
-        <label class="check-label">
+        <div class="checkbox">
           <input type="checkbox" id="checkBtn" class="check-btn"></input>
-          <span class="check-btn-style checked" tabindex="0"></span>
-        </label>
+          <label for="checkBtn" class="check-btn-style checked"></label>
+        </div>
         <span id="toDoText" class="to-do-text"></span>
         <span class="deadline">Deadline:</span>
         <button id="deleteBtn" class="delete-btn">Delete</button>
