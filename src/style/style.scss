@@ -87,6 +87,7 @@ select {
 
 // How to be able to tab to checkbox if not visible?
 .check-btn {
+  position: absolute;
   grid-area: left;
   height: 3.5rem;
   width: 3.5rem;
@@ -105,9 +106,10 @@ select {
   border-color: #939393;
   height: 3.5rem;
   width: 3.5rem;
-  cursor: pointer;
-}
+  cursor: pointer; 
+} 
 
+// Why does this move when checkbox is checked?
 .checkbox input[type="checkbox"]:focus + label::before {
   outline: #fff auto 5px;
 }

@@ -44,6 +44,11 @@ select {
     width: 4rem;
 }
 
+.check-btn-style::before {
+    height: 4rem;
+    width: 4rem;
+}
+
 .delete-btn {
     font-size: 1rem;
 }
