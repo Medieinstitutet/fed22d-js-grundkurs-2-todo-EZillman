@@ -149,7 +149,7 @@ function displayToDos() {
     toDoList.appendChild(toDoItem);
 
     // Checks todo if input checkbox is checked
-    function toDoChecked(e) {
+    /*function toDoChecked(e) {
       toDo.complete = e.target.checked;
       localStorage.setItem('toDos', JSON.stringify(toDos));
     
@@ -172,12 +172,13 @@ function displayToDos() {
     // CheckBtn and deleteBtn only exists in this function,
     // the eventlisteners will not work if moved outside
     checkBtn.addEventListener('click', toDoChecked)
-    deleteBtn.addEventListener('click', deleteToDo);
+    deleteBtn.addEventListener('click', deleteToDo); */
   })
 }
 
 // Checks todo if input checkbox is checked 
-/*function toDoChecked(e) {
+function toDoChecked(e) {
+  
   toDo.complete = e.target.checked;
   localStorage.setItem('toDos', JSON.stringify(toDos));
   if (toDo.complete) {
@@ -193,14 +194,14 @@ function displayToDos() {
       
       
 function deleteToDo() {
-  toDos = toDos.filter(test => test !== toDo);
+  toDos = toDos.filter(remove => remove !== toDo);
   localStorage.setItem('toDos', JSON.stringify(toDos));
   displayToDos();
 }
 
 
 checkBtn.addEventListener('click', toDoChecked)
-deleteBtn.addEventListener('click', deleteToDo); */
+deleteBtn.addEventListener('click', deleteToDo); 
 
 window.addEventListener('load', loadToDos);
 newToDoForm.addEventListener('submit', newToDo); 
