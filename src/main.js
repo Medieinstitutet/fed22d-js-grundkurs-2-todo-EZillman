@@ -74,18 +74,17 @@ let toDos = [
 // Load todos from local storage
 function loadToDos() {
   toDos = JSON.parse(localStorage.getItem('toDos')) || [];
-  displayToDos()
+  displayToDos();
   localStorage.setItem('toDos', JSON.stringify(toDos));
 }
 
 // Creates new todos
 function newToDo(e) {
-  if (newToDoField.value.length === 0 || deadlineField.value-length === 0) {
-    e.preventDefault();
+  e.preventDefault();
+  if (newToDoField.value.length === 0 || deadlineField.value.length === 0) {
     return;
   }
     if (e !== undefined) {
-      e.preventDefault();
       const toDo = {
         content: e.target.elements.toDoContent.value,
         complete: false,
@@ -93,7 +92,7 @@ function newToDo(e) {
         deadline: e.target.elements.deadlineDate.value
       }
       toDos.push(toDo);
-      displayToDos()
+      displayToDos();
     }
 }
 

@@ -15,7 +15,7 @@
   <nav>
     <form id="newToDoForm">
       <label>Add todo
-        <input type="text" name="toDoContent" id="newToDoField" class="to-do-content" required></input>
+        <input type="text" name="toDoContent" id="newToDoField" class="to-do-content" required>
       </label><br>
       <label class="deadline">Deadline
         <input id="deadlineField" name="deadlineDate" type="date" required>
@@ -24,10 +24,10 @@
     </form>
 
     <select>
-      <option value="Sort by" selected disabled>Sort By</option>
-      <option value="Deadline">Deadline</option>
-      <option value="Name">Name</option>
-      <option value="Added">Latest added</option>
+      <option value="sortBy" selected disabled>Sort By</option>
+      <option value="deadline">Deadline</option>
+      <option value="name">Name</option>
+      <option value="added">Latest added</option>
     </select>
   </nav>
   <!--TODO: Fix the position of the checkbox-->
@@ -35,7 +35,7 @@
     <ul id="thingsToDo" class="things-to-do">
       <li id="toDo" class="to-do-item complete">
         <div class="checkbox">
-          <input type="checkbox" id="checkBtn" class="check-btn"></input>
+          <input type="checkbox" id="checkBtn" class="check-btn">
           <label for="checkBtn" class="check-btn-style checked"></label>
         </div>
         <span id="toDoText" class="to-do-text"></span>
