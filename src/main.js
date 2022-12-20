@@ -69,7 +69,6 @@ const deadlineField = document.querySelector('#deadlineField');
 const toDoList = document.querySelector('#thingsToDo');
 
 
-
 let toDos = [
   ''
 ]; 
@@ -179,7 +178,40 @@ function displayToDos() {
   })
 }
 
-
+/**
+ * Already tried methods:
+ * 1. Copying the consts needed for checking and deleting from 
+ * the function displayToDos and putting them outside of the function
+ * to make them global. 
+ * 
+ * 2. Using queryselector to get id's from the html and creating the 
+ * different elements for the list at the top and not inside any function.
+ * Example: const checkBtn = document.querySelector('#checkBtn');
+ * And then using the const inside displayToDos to create an element
+ * Example: checkBtn.document.createElement('input');
+ * This is not the right method of cretaing an element and doesn't work,
+ * it gives an error message.
+ * 
+ * 3. Copying the consts from displayToDos and putting them directly in
+ * both the checking function and deleting function.
+ * 
+ * 4. Converting the consts from displayToDos from local to global variables,
+ * trying these two methods:
+ * a. 
+ * function foo(){
+ *    var bar1; // Local variable
+ *    bar1 = 11;
+ *    bar2 = bar1; // bar2 will be global with same value.
+ * }
+ * 
+ * b.
+ * function foo(){
+ *   var bar1; // Local variable
+ *   bar1 = 11;
+ *   window.bar2 = bar1; // bar2 will be global with same value.
+ *}
+ * 
+ */
 
 
 // Checks todo if input checkbox is checked 
@@ -196,7 +228,6 @@ function toDoChecked(e) {
   displayToDos();
 } 
 
-      
       
 function deleteToDo() {
   toDos = toDos.filter(remove => remove !== toDo);
