@@ -66,6 +66,10 @@ const newToDoForm = document.querySelector('#newToDoForm');
 const newToDoField = document.querySelector('#newToDoField');
 const deadlineField = document.querySelector('#deadlineField');
 
+const toDoList = document.querySelector('#thingsToDo');
+
+
+
 let toDos = [
   ''
 ]; 
@@ -100,7 +104,6 @@ function newToDo(e) {
 // Makes the todos show up 
 function displayToDos() {
   localStorage.setItem('toDos', JSON.stringify(toDos));
-  const toDoList = document.querySelector('#thingsToDo');
   toDoList.innerHTML = '';
 
   toDos.forEach(toDo => {
@@ -176,9 +179,11 @@ function displayToDos() {
   })
 }
 
+
+
+
 // Checks todo if input checkbox is checked 
 function toDoChecked(e) {
-  
   toDo.complete = e.target.checked;
   localStorage.setItem('toDos', JSON.stringify(toDos));
   if (toDo.complete) {
@@ -200,7 +205,7 @@ function deleteToDo() {
 }
 
 
-checkBtn.addEventListener('click', toDoChecked)
+checkBtn.addEventListener('click', toDoChecked);
 deleteBtn.addEventListener('click', deleteToDo); 
 
 window.addEventListener('load', loadToDos);
