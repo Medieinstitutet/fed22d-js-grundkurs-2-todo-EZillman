@@ -98,6 +98,40 @@ function newToDo(e) {
     }
 }
 
+//const checkBtn = document.querySelector('#checkBtn');
+//const deleteBtn = document.querySelector('#deleteBtn');
+
+
+
+// Checks todo if input checkbox is checked 
+function toDoChecked(e) {
+  const toDo = toDos[e.target.dataset.id];
+  toDo.complete = e.target.checked;
+
+  localStorage.setItem('toDos', JSON.stringify(toDos));
+
+  const toDoItem = e.target.parentElement.parentElement;
+  const checkBtnStyle = e.target.nextElementSibling;
+
+  if (toDo.complete) {
+    toDoItem.classList.add('complete');
+    checkBtnStyle.classList.add('checked');
+  } else {
+    toDoItem.classList.remove('complete');
+    checkBtnStyle.classList.remove('checked');
+  }
+} 
+
+
+function deleteToDo(e) {
+  const toDoIndex = e.target.dataset.id;
+
+  toDos.splice(toDoIndex, 1)
+
+  localStorage.setItem('toDos', JSON.stringify(toDos));
+
+  displayToDos();
+} 
 
 
 // Makes the todos show up 
@@ -105,7 +139,7 @@ function displayToDos() {
   localStorage.setItem('toDos', JSON.stringify(toDos));
   toDoList.innerHTML = '';
 
-  toDos.forEach(toDo => {
+  toDos.forEach((toDo, index) => {
     const toDoItem = document.createElement('li');
     toDoItem.classList.add('to-do-item');
 
@@ -120,9 +154,11 @@ function displayToDos() {
     checkBtn.checked = toDo.complete;
     checkboxDiv.classList.add('checkbox');
     checkBtn.classList.add('check-btn');
-    checkBtn.setAttribute('id', 'checkBtn');
+    checkBtn.setAttribute('data-id', index);
+    //checkBtn.setAttribute('id', 'checkBtn');
     checkBtnStyle.htmlFor = 'checkBtn'
     checkBtnStyle.classList.add('check-btn-style');
+    deleteBtn.setAttribute('data-id', index);
         
     if (toDo.complete) {
       toDoItem.classList.add('complete');
@@ -150,94 +186,12 @@ function displayToDos() {
 
     toDoList.appendChild(toDoItem);
 
-    // Checks todo if input checkbox is checked
-    /*function toDoChecked(e) {
-      toDo.complete = e.target.checked;
-      localStorage.setItem('toDos', JSON.stringify(toDos));
-    
-      if (toDo.complete) {
-        toDoItem.classList.add('complete');
-        checkBtnStyle.classList.add('checked');
-      } else {
-        toDoItem.classList.remove('complete');
-        checkBtnStyle.classList.remove('checked');
-      }
-    } 
-    
-    // Deletes todo when clicking on 'delete'
-    function deleteToDo() {
-      toDos = toDos.filter(remove => remove !== toDo);
-      localStorage.setItem('toDos', JSON.stringify(toDos));
-      displayToDos();
-    } 
-
-    // CheckBtn and deleteBtn only exists in this function,
-    // the eventlisteners will not work if moved outside
-    checkBtn.addEventListener('click', toDoChecked)
-    deleteBtn.addEventListener('click', deleteToDo); */
+    checkBtn.addEventListener('click', toDoChecked);
+    deleteBtn.addEventListener('click', deleteToDo); 
   })
 }
 
-/**
- * Already tried methods:
- * 1. Copying the consts needed for checking and deleting from 
- * the function displayToDos and putting them outside of the function
- * to make them global. 
- * 
- * 2. Using queryselector to get id's from the html and creating the 
- * different elements for the list at the top and not inside any function.
- * Example: const checkBtn = document.querySelector('#checkBtn');
- * And then using the const inside displayToDos to create an element
- * Example: checkBtn.document.createElement('input');
- * This is not the right method of cretaing an element and doesn't work,
- * it gives an error message.
- * 
- * 3. Copying the consts from displayToDos and putting them directly in
- * both the checking function and deleting function.
- * 
- * 4. Converting the consts from displayToDos from local to global variables,
- * trying these two methods:
- * a. 
- * function foo(){
- *    var bar1; // Local variable
- *    bar1 = 11;
- *    bar2 = bar1; // bar2 will be global with same value.
- * }
- * 
- * b.
- * function foo(){
- *   var bar1; // Local variable
- *   bar1 = 11;
- *   window.bar2 = bar1; // bar2 will be global with same value.
- *}
- * 
- */
 
-
-// Checks todo if input checkbox is checked 
-function toDoChecked(e) {
-  toDo.complete = e.target.checked;
-  localStorage.setItem('toDos', JSON.stringify(toDos));
-  if (toDo.complete) {
-    toDoItem.classList.add('complete');
-    checkBtnStyle.classList.add('checked');
-  } else {
-    toDoItem.classList.remove('complete');
-    checkBtnStyle.classList.remove('checked');
-  }
-  displayToDos();
-} 
-
-      
-function deleteToDo() {
-  toDos = toDos.filter(remove => remove !== toDo);
-  localStorage.setItem('toDos', JSON.stringify(toDos));
-  displayToDos();
-}
-
-
-checkBtn.addEventListener('click', toDoChecked);
-deleteBtn.addEventListener('click', deleteToDo); 
 
 window.addEventListener('load', loadToDos);
 newToDoForm.addEventListener('submit', newToDo); 
