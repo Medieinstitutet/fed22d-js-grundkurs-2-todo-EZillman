@@ -66,8 +66,7 @@ const newToDoForm = document.querySelector('#newToDoForm');
 const newToDoField = document.querySelector('#newToDoField');
 const deadlineField = document.querySelector('#deadlineField');
 
-const toDoList = document.querySelector('#thingsToDo');
-
+const sorting = document.querySelector('#sorting');
 
 let toDos = [
   ''
@@ -97,9 +96,6 @@ function newToDo(e) {
       displayToDos();
     }
 }
-
-//const checkBtn = document.querySelector('#checkBtn');
-//const deleteBtn = document.querySelector('#deleteBtn');
 
 
 
@@ -137,6 +133,7 @@ function deleteToDo(e) {
 // Makes the todos show up 
 function displayToDos() {
   localStorage.setItem('toDos', JSON.stringify(toDos));
+  const toDoList = document.querySelector('#thingsToDo');
   toDoList.innerHTML = '';
 
   toDos.forEach((toDo, index) => {
@@ -155,7 +152,6 @@ function displayToDos() {
     checkboxDiv.classList.add('checkbox');
     checkBtn.classList.add('check-btn');
     checkBtn.setAttribute('data-id', index);
-    //checkBtn.setAttribute('id', 'checkBtn');
     checkBtnStyle.htmlFor = 'checkBtn'
     checkBtnStyle.classList.add('check-btn-style');
     deleteBtn.setAttribute('data-id', index);
@@ -191,8 +187,22 @@ function displayToDos() {
   })
 }
 
+function sortBy(e) {
+  if (e.target.value === 'deadline') {
+
+  }
+
+  if (e.target.value === 'name') {
+
+  }
+
+  if (e.target.value === 'added') {
+    
+  }
+}
 
 
 window.addEventListener('load', loadToDos);
 newToDoForm.addEventListener('submit', newToDo); 
+sorting.addEventListener('change', sortBy);
 
