@@ -97,6 +97,26 @@ function newToDo(e) {
     }
 }
 
+// Checks todo if input checkbox is checked
+// TODO: The classlist 'complete' disappears when reloading the page, fix
+function toDoChecked(e) {
+  const toDo = toDos[e.target.dataset.id]; // Get item from todo array
+  toDo.complete = e.target.checked;
+
+  localStorage.setItem('toDos', JSON.stringify(toDos));
+
+  const toDoItem = e.target.parentElement.parentElement; // Navigera upp i HTML-strukturen till LI-elementet
+  const checkBtnStyle = e.target.nextElementSibling; // Navigera till span-elementet i HTML-strukturen
+
+  if (toDo.complete) {
+    toDoItem.classList.add('complete');
+    checkBtnStyle.classList.add('checked');
+  } else {
+    toDoItem.classList.remove('complete');
+    checkBtnStyle.classList.remove('checked');
+  }
+} 
+
 
 // Makes the todos show up 
 function displayToDos() {
@@ -104,7 +124,7 @@ function displayToDos() {
   const toDoList = document.querySelector('#thingsToDo');
   toDoList.innerHTML = '';
 
-  toDos.forEach(toDo => {
+  toDos.forEach((toDo, index) => {
     const toDoItem = document.createElement('li');
     toDoItem.classList.add('to-do-item');
 
@@ -117,6 +137,7 @@ function displayToDos() {
 
     checkBtn.type = 'checkbox';
     checkBtn.checked = toDo.complete;
+    checkBtn.setAttribute('data-id', index); // Save the items ID in a data attribute
     checkLabel.classList.add('check-label');
     checkBtn.classList.add('check-btn');
     checkBtnStyle.classList.add('check-btn-style');
@@ -141,21 +162,6 @@ function displayToDos() {
     toDoItem.appendChild(deleteBtn);
 
     toDoList.appendChild(toDoItem);
-
-    // Checks todo if input checkbox is checked
-    // TODO: The classlist 'complete' disappears when reloading the page, fix
-    function toDoChecked(e) {
-      toDo.complete = e.target.checked;
-      localStorage.setItem('toDos', JSON.stringify(toDos));
-    
-      if (toDo.complete) {
-        toDoItem.classList.add('complete');
-        checkBtnStyle.classList.add('checked');
-      } else {
-        toDoItem.classList.remove('complete');
-        checkBtnStyle.classList.remove('checked');
-      }
-    } 
     
     // Deletes todo when clicking on 'delete'
     function deleteToDo() {
