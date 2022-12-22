@@ -1,13 +1,8 @@
 
 import './style/style.scss';
 
-// All kod härifrån och ner är bara ett exempel för att komma igång
-
 // I denna utils-fil har vi lagrat funktioner som ofta används, t.ex. en "blanda array"-funktion
 // import { shuffle } from './utils';
-
-// I denna fil har vi lagrat vår "data"
-//import toDos from './exampleArray';
 
 // Move variables to exampleArray?
 
@@ -68,7 +63,7 @@ function toDoChecked(e) {
   }
 } 
 
-
+// Deletes a todo if you click on the "delete" button
 function deleteToDo(e) {
   const toDoIndex = e.target.dataset.id;
   
@@ -79,6 +74,33 @@ function deleteToDo(e) {
   displayToDos();
 } 
 
+  
+// TODO: The todo items should be put in the chosen sorting order when added
+
+// Sorts the todos in chosen order
+function sortBy(e) {
+  localStorage.setItem('toDos', JSON.stringify(toDos));
+
+  if (e.target.value === 'deadline') {
+    toDos.sort((a, b) => {
+      return a.deadline === b.deadline ? 0 : a.deadline < b.deadline ? -1 : 1;
+    });
+  }
+
+  if (e.target.value === 'name') {
+    toDos.sort((a, b) => {
+      return a.content === b.content ? 0 : a.content < b.content ? -1 : 1;
+    });
+  }
+
+  if (e.target.value === 'added') {
+    toDos.sort((a, b) => {
+      return b.createdAt === a.createdAt ? 0 : b.createdAt < a.createdAt ? -1 : 1;
+    });
+  }
+  displayToDos();
+} 
+  
 
 // Makes the todos show up 
 function displayToDos() {
@@ -138,37 +160,9 @@ function displayToDos() {
   
   })
 
-  // TODO: apply index to the toDos array from this function and move the sorting outside
-  // TODO: The todo items should be put in the chosen sorting order when added
-  function sortBy(e) {
-    localStorage.setItem('toDos', JSON.stringify(toDos));
-
-    if (e.target.value === 'deadline') {
-      toDos.sort((a, b) => {
-        return a.deadline === b.deadline ? 0 : a.deadline < b.deadline ? -1 : 1;
-      });
-    }
-
-    if (e.target.value === 'name') {
-      toDos.sort((a, b) => {
-        return a.content === b.content ? 0 : a.content < b.content ? -1 : 1;
-      });
-    }
-
-    if (e.target.value === 'added') {
-      toDos.sort((a, b) => {
-        return b.createdAt === a.createdAt ? 0 : b.createdAt < a.createdAt ? -1 : 1;
-      });
-    }
-    displayToDos();
-  } 
-
 }
 
-
-
-  
-
+// Eventlisteners
 window.addEventListener('load', loadToDos);
 newToDoForm.addEventListener('submit', newToDo); 
 
