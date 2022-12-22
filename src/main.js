@@ -71,9 +71,9 @@ function toDoChecked(e) {
 
 function deleteToDo(e) {
   const toDoIndex = e.target.dataset.id;
-
+  
   toDos.splice(toDoIndex, 1)
-
+  
   localStorage.setItem('toDos', JSON.stringify(toDos));
 
   displayToDos();
@@ -105,6 +105,14 @@ function displayToDos() {
     checkBtnStyle.htmlFor = 'checkBtn'
     checkBtnStyle.classList.add('check-btn-style');
     deleteBtn.setAttribute('data-id', index);
+
+    if (toDo.complete) {
+      toDoItem.classList.add('complete');
+      checkBtnStyle.classList.add('checked');
+    } else {
+      toDoItem.classList.remove('complete');
+      checkBtnStyle.classList.remove('checked');
+    }
         
     toDoText.classList.add('to-do-text');
     deadline.classList.add('deadline');
@@ -131,7 +139,10 @@ function displayToDos() {
   })
 
   // TODO: apply index to the toDos array from this function and move the sorting outside
+  // TODO: The todo items should be put in the chosen sorting order when added
   function sortBy(e) {
+    localStorage.setItem('toDos', JSON.stringify(toDos));
+
     if (e.target.value === 'deadline') {
       toDos.sort((a, b) => {
         return a.deadline === b.deadline ? 0 : a.deadline < b.deadline ? -1 : 1;
@@ -139,15 +150,17 @@ function displayToDos() {
     }
 
     if (e.target.value === 'name') {
-    
+    // Put sorting in alphabetical order
     }
 
     if (e.target.value === 'added') {
       toDos.sort((a, b) => {
-        return a.createdAt === b.createdAt ? 0 : a.createdAt < b.createdAt ? -1 : 1;
+        return b.createdAt === a.createdAt ? 0 : b.createdAt < a.createdAt ? -1 : 1;
+       
       });
     }
-  }
+    displayToDos();
+  } 
 
 }
 
