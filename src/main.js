@@ -77,6 +77,8 @@ function deleteToDo(e) {
   
 // TODO: The todo items should be put in the chosen sorting order when added
 
+// TODO: Fix alphabetical sorting for both uppercase and lowercase
+
 // Sorts the todos in chosen order
 function sortBy(e) {
   localStorage.setItem('toDos', JSON.stringify(toDos));
@@ -141,6 +143,7 @@ function displayToDos() {
     deleteBtn.classList.add('delete-btn');
 
     toDoText.innerHTML = `${toDo.content}`
+    checkBtn.innerHTML = `Check`
     deadline.innerHTML = `Deadline: ${toDo.deadline}`
     deleteBtn.innerHTML = 'Delete'
     
