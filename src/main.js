@@ -138,12 +138,13 @@ function displayToDos() {
       checkBtnStyle.classList.remove('checked');
     }
         
+    checkBtn.ariaLabel = 'checkbox'
+
     toDoText.classList.add('to-do-text');
     deadline.classList.add('deadline');
     deleteBtn.classList.add('delete-btn');
 
     toDoText.innerHTML = `${toDo.content}`
-    checkBtn.innerHTML = `Check`
     deadline.innerHTML = `Deadline: ${toDo.deadline}`
     deleteBtn.innerHTML = 'Delete'
     
