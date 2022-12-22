@@ -150,13 +150,14 @@ function displayToDos() {
     }
 
     if (e.target.value === 'name') {
-    // Put sorting in alphabetical order
+      toDos.sort((a, b) => {
+        return a.content === b.content ? 0 : a.content < b.content ? -1 : 1;
+      });
     }
 
     if (e.target.value === 'added') {
       toDos.sort((a, b) => {
         return b.createdAt === a.createdAt ? 0 : b.createdAt < a.createdAt ? -1 : 1;
-       
       });
     }
     displayToDos();
