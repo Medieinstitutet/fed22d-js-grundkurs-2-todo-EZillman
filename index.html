@@ -5,9 +5,10 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/ico" href="/fed22d-js-grundkurs-2-todo-EZillman/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A simple todo list">
   <title>Projekt</title>
-  <script type="module" crossorigin src="/fed22d-js-grundkurs-2-todo-EZillman/assets/index.feb8070c.js"></script>
-  <link rel="stylesheet" href="/fed22d-js-grundkurs-2-todo-EZillman/assets/index.28539b64.css">
+  <script type="module" crossorigin src="/fed22d-js-grundkurs-2-todo-EZillman/assets/index.9513e365.js"></script>
+  <link rel="stylesheet" href="/fed22d-js-grundkurs-2-todo-EZillman/assets/index.1a6cdf1c.css">
 </head>
 
 <body>
@@ -17,7 +18,7 @@
   <nav>
     <form id="newToDoForm">
       <label>Add todo
-        <input type="text" name="toDoContent" id="newToDoField" class="to-do-content" required></input>
+        <input type="text" name="toDoContent" id="newToDoField" class="to-do-content" required>
       </label><br>
       <label class="deadline">Deadline
         <input id="deadlineField" name="deadlineDate" type="date" required>
@@ -25,21 +26,21 @@
       <button type="submit" id="addToDoBtn" class="add-btn">Add</button>
     </form>
 
-    <select>
-      <option value="Sort by" selected disabled>Sort By</option>
-      <option value="Deadline">Deadline</option>
-      <option value="Name">Name</option>
-      <option value="Added">Latest added</option>
+    <select id="sorting">
+      <option value="sortBy" selected disabled>Sort By</option>
+      <option id="deadline" value="deadline">Deadline</option>
+      <option value="name">Name</option>
+      <option value="added">Latest added</option>
     </select>
   </nav>
-
+  <!--TODO: Fix the position of the checkbox-->
   <main>
     <ul id="thingsToDo" class="things-to-do">
       <li id="toDo" class="to-do-item complete">
-        <label class="check-label">
-          <input type="checkbox" id="checkBtn" class="check-btn"></input>
-          <span class="check-btn-style checked"></span>
-        </label>
+        <div class="checkbox">
+          <input type="checkbox" id="checkBtn" class="check-btn">
+          <label for="checkBtn" class="check-btn-style checked"></label>
+        </div>
         <span id="toDoText" class="to-do-text"></span>
         <span class="deadline">Deadline:</span>
         <button id="deleteBtn" class="delete-btn">Delete</button>
