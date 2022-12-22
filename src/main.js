@@ -11,56 +11,6 @@ import './style/style.scss';
 
 // Move variables to exampleArray?
 
-/*const list = document.querySelector('#thingsToDo');
-
-const addToDoBtn = document.querySelector('#addToDoBtn');
-
-const newToDoName = document.querySelector('#newToDoField');*/
-
-
-/*printToDo();
-
-function addNewToDo() {
-  if (newToDoName.value.length === 0) {
-    return;
-  }
-  if (toDos.indexOf(newToDoName.value) === -1) {
-    toDos.push(newToDoName.value);
-    printToDo();
-  }
-}
-
-// Adding todo:s by writing in the input field and clicking on the "add" button
-function printToDo() {
-  list.innerHTML = '';
-
-  for (let i = 0; i < toDos.length; i++) {
-    const toDoName = toDos[i];
-    const toDoNode = document.createElement('li');
-    toDoNode.classList.add('to-do-item');
-    const toDoTextNode = document.createTextNode(toDoName); 
-    toDoNode.appendChild(toDoTextNode);
-
-    const checkToDoBtn = document.createElement('button');
-    const checkToDoBtnText = document.createTextNode('Check');
-    checkToDoBtn.appendChild(checkToDoBtnText);
-    checkToDoBtn.classList.add('check-btn');
-    toDoNode.appendChild(checkToDoBtn);        
-
-    const deleteToDoBtn = document.createElement('button');
-    const deleteToDoBtnText = document.createTextNode('Delete');
-    deleteToDoBtn.appendChild(deleteToDoBtnText);
-    deleteToDoBtn.classList.add('delete-btn');
-    toDoNode.appendChild(deleteToDoBtn);
-
-    list.appendChild(toDoNode);
-  }
-} */
-
-//---------------------------------------------
-//------------------New method-----------------
-//--------------------------------------------- 
-
 //Variables
 const newToDoForm = document.querySelector('#newToDoForm');
 const newToDoField = document.querySelector('#newToDoField');
@@ -92,11 +42,11 @@ function newToDo(e) {
         createdAt: new Date().getTime(),
         deadline: e.target.elements.deadlineDate.value
       }
+
       toDos.push(toDo);
       displayToDos();
     }
 }
-
 
 
 // Checks todo if input checkbox is checked 
@@ -136,7 +86,7 @@ function displayToDos() {
   const toDoList = document.querySelector('#thingsToDo');
   toDoList.innerHTML = '';
 
-  toDos.forEach((toDo, index) => {
+  toDos.forEach((toDo, index,) => {
     const toDoItem = document.createElement('li');
     toDoItem.classList.add('to-do-item');
 
@@ -156,14 +106,6 @@ function displayToDos() {
     checkBtnStyle.classList.add('check-btn-style');
     deleteBtn.setAttribute('data-id', index);
         
-    if (toDo.complete) {
-      toDoItem.classList.add('complete');
-      checkBtnStyle.classList.add('checked');
-    } else {
-      toDoItem.classList.remove('complete');
-      checkBtnStyle.classList.remove('checked');
-    }
-
     toDoText.classList.add('to-do-text');
     deadline.classList.add('deadline');
     deleteBtn.classList.add('delete-btn');
@@ -184,25 +126,37 @@ function displayToDos() {
 
     checkBtn.addEventListener('click', toDoChecked);
     deleteBtn.addEventListener('click', deleteToDo); 
+    sorting.addEventListener('change', sortBy);
+  
   })
-}
 
-function sortBy(e) {
-  if (e.target.value === 'deadline') {
+  // TODO: apply index to the toDos array from this function and move the sorting outside
+  function sortBy(e) {
+    if (e.target.value === 'deadline') {
+      toDos.sort((a, b) => {
+        return a.deadline === b.deadline ? 0 : a.deadline < b.deadline ? -1 : 1;
+      });
+    }
 
-  }
-
-  if (e.target.value === 'name') {
-
-  }
-
-  if (e.target.value === 'added') {
+    if (e.target.value === 'name') {
     
+    }
+
+    if (e.target.value === 'added') {
+      toDos.sort((a, b) => {
+        return a.createdAt === b.createdAt ? 0 : a.createdAt < b.createdAt ? -1 : 1;
+      });
+    }
   }
+
 }
 
+
+
+  
 
 window.addEventListener('load', loadToDos);
 newToDoForm.addEventListener('submit', newToDo); 
-sorting.addEventListener('change', sortBy);
+
+
 
