@@ -6,7 +6,7 @@
   font-weight: 400;
   color-scheme: light dark;
   color: #d3d1d1de;
-  background-image: url('/public/mobile-background.jpg');
+  background-image: url('/public/mobile-background.jpg');  // Not my picture
   background-size: cover;
   font-synthesis: none;
   text-rendering: optimizelegibility;
@@ -17,7 +17,7 @@
 
 header {
   background-color: #161524;
-  padding: 2rem;
+  padding: 0.5rem;
   font-size: 2.5rem;
   text-align: center;
 }
@@ -72,6 +72,7 @@ select {
   grid-area: center2;
 }
 
+
 //Buttons
 .add-btn {
   margin-top: 0.2rem;
@@ -85,7 +86,6 @@ select {
   grid-area: left;
 }
 
-// How to be able to tab to checkbox if not visible?
 .check-btn {
   position: absolute;
   grid-area: left;
@@ -109,7 +109,6 @@ select {
   cursor: pointer; 
 } 
 
-// Why does this move when checkbox is checked?
 .checkbox input[type="checkbox"]:focus + label::before {
   outline: #fff auto 5px;
 }
@@ -152,4 +151,4 @@ select {
 
 @media screen and (min-width: 1024px) {
   @import "desktop.scss";
-} // TODO: When stylelint errors are fixed/gone the link doesn't work
+} 

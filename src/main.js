@@ -1,11 +1,6 @@
 
 import './style/style.scss';
 
-// I denna utils-fil har vi lagrat funktioner som ofta används, t.ex. en "blanda array"-funktion
-// import { shuffle } from './utils';
-
-// Move variables to exampleArray?
-
 //Variables
 const newToDoForm = document.querySelector('#newToDoForm');
 const newToDoField = document.querySelector('#newToDoField');
@@ -63,6 +58,7 @@ function toDoChecked(e) {
   }
 } 
 
+
 // Deletes a todo if you click on the "delete" button
 function deleteToDo(e) {
   const toDoIndex = e.target.dataset.id;
@@ -74,8 +70,6 @@ function deleteToDo(e) {
   displayToDos();
 } 
 
-  
-// TODO: The todo items should be put in the chosen sorting order when added
 
 // Sorts the todos in chosen order
 function sortBy(e) {
