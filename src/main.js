@@ -77,8 +77,6 @@ function deleteToDo(e) {
   
 // TODO: The todo items should be put in the chosen sorting order when added
 
-// TODO: Fix alphabetical sorting for both uppercase and lowercase
-
 // Sorts the todos in chosen order
 function sortBy(e) {
   localStorage.setItem('toDos', JSON.stringify(toDos));
@@ -90,8 +88,10 @@ function sortBy(e) {
   }
 
   if (e.target.value === 'name') {
-    toDos.sort((a, b) => {
-      return a.content === b.content ? 0 : a.content < b.content ? -1 : 1;
+    toDos.sort((a, z) => {
+      let contentA = a.content.toLowerCase();
+      let contentZ = z.content.toLowerCase();
+      return contentA === contentZ ? 0 : contentA < contentZ ? -1 : 1;
     });
   }
 
