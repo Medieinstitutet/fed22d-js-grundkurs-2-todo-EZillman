@@ -2,14 +2,12 @@
 @use "vendor/reset";
 
 :root {
-  // TODO: Går bra att radera kod även här!
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: rem(16px);
-  line-height: 24px;
   font-weight: 400;
   color-scheme: light dark;
-  color: rgb(255 255 255 / 87%);
-  background-color: #242424;
+  color: #d3d1d1de;
+  background-image: url('/public/mobile-background.jpg');  // Not my picture
+  background-size: cover;
   font-synthesis: none;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
@@ -17,48 +15,140 @@
   text-size-adjust: 100%;
 }
 
-// TODO: Radera mig! Jag är bara ett exempel.
-main {
-  padding: 20px;
+header {
+  background-color: #161524;
+  padding: 0.5rem;
+  font-size: 2.5rem;
+  text-align: center;
 }
 
-.app {
-  margin-block: 20px;
+nav {
   display: flex;
-  gap: 20px;
-  justify-content: space-around;
-
-  .card {
-    $card-size: 250px;
-
-    width: 0.6413 * $card-size;
-    height: $card-size;
-    cursor: pointer;
-    background: #102a3f;
-    border-radius: 8px;
-    display: flex;
-    font-weight: bold;
-    align-items: center;
-    justify-content: space-around;
-    text-align: center;
-    box-shadow: 5px 5px 5px rgb(0 0 0 / 20%);
-
-    .front {
-      font-size: rem(50px);
-    }
-
-    .back {
-      display: none;
-    }
-
-    &.visible {
-      .front {
-        display: none;
-      }
-
-      .back {
-        display: block;
-      }
-    }
-  }
+  justify-content: center;
+  background-color: #1d1f1f;
+  padding: 1rem;
+  min-height: 8rem;
 }
+
+select {
+  height: 2.5rem
+}
+
+//Main
+
+//To do blocks
+.things-to-do {
+  padding: 0;
+}
+
+.to-do-item {
+  display: grid;
+  grid-template-areas: 'left center center2 right';
+  grid-template-columns: 0.3fr 1.3fr 0.6fr 0.12fr;
+  background-color: #1d1f1f;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  min-height: fit-content;
+  border-radius: 2rem;  
+  border: 0.1rem;
+  border-style: solid;
+  border-color: black;
+}
+
+.to-do-content {
+  margin-bottom: 1rem;
+}
+
+.complete {
+  background-color: #2a2d2dd2;
+
+}
+
+.date-added {
+  padding: 0.5rem;
+}
+
+.deadline {
+  grid-area: center2;
+}
+
+
+//Buttons
+.add-btn {
+  margin-top: 0.2rem;
+  height: 2.5rem;
+  width: 5rem;
+  cursor: pointer;
+}
+
+.check-label {
+  display: grid;
+  grid-area: left;
+}
+
+.check-btn {
+  position: absolute;
+  grid-area: left;
+  height: 3.5rem;
+  width: 3.5rem;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.check-btn-style::before {
+  content: "";
+  grid-area: left;
+  display: block;
+  background-color: #f0f8ff00;
+  border-radius: 50%;
+  border: 0.2rem;
+  border-style: solid;
+  border-color: #939393;
+  height: 3.5rem;
+  width: 3.5rem;
+  cursor: pointer; 
+} 
+
+.checkbox input[type="checkbox"]:focus + label::before {
+  outline: #fff auto 5px;
+}
+
+.checked {
+  grid-area: left;
+  display: block;
+  background-color: #939393;
+  border-radius: 50%;
+  border: 0.5rem;
+  border-style: solid;
+  border-color: #939393;
+  height: 3.5rem;
+  width: 3.5rem;
+  cursor: pointer;
+} 
+
+.edit-btn {
+  grid-area: center2;
+  border-radius: 50%;
+  border: 0;
+  height: 3.5rem;
+  width: 3.5rem;
+}
+
+.delete-btn {
+  grid-area: right;
+  border-radius: 50%;
+  border: 0.2rem;
+  border-style: solid;
+  border-color: #939393;
+  height: 3.5rem;
+  width: 3.5rem;
+  padding-left: 0.3rem;
+  font-size: 0.8rem;
+  background-color: #0d0829;
+  cursor: pointer;
+}
+
+
+@media screen and (min-width: 1024px) {
+  @import "desktop.scss";
+} 

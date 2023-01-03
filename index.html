@@ -1,22 +1,52 @@
 <!DOCTYPE html>
-<html lang="en"> <!-- TODO: glöm ej att byta språk här -->
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/ico" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Projekt</title>
-  </head>
-  <body>
-    <main>
-      <div class="app" id="app"></div> <!-- TODO: går bra att radera -->
-      <!-- TODO: skriv din kod här, innan script-taggen -->
-    </main>
+<html lang="en">
 
-    <!-- TODO
-    - Validera HTML (kopiera den renderade HTML-koden): https://validator.w3.org/#validate_by_input
-    - Kontrollera tillgänglighet: https://www.a11yproject.com/checklist/ & Chrome Lighthouse/Firefox Accessibility Tools
-    - Validera genererade CSS: https://jigsaw.w3.org/css-validator/#validate_by_input
-    -->
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/ico" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A simple todo list">
+  <title>Projekt</title>
+</head>
+
+<body>
+  <header>
+    <h1>Todo List</h1>
+  </header>
+  <nav>
+    <form id="newToDoForm">
+      <label>Add todo
+        <input type="text" name="toDoContent" id="newToDoField" class="to-do-content" required>
+      </label><br>
+      <label class="deadline">Deadline
+        <input id="deadlineField" name="deadlineDate" type="date" required>
+      </label>
+      <button type="submit" id="addToDoBtn" class="add-btn">Add</button>
+    </form>
+
+    <select id="sorting">
+      <option value="sortBy" selected disabled>Sort By</option>
+      <option id="deadline" value="deadline">Deadline</option>
+      <option value="name">Name</option>
+      <option value="added">Latest added</option>
+    </select>
+  </nav>
+
+  <main>
+    <ul id="thingsToDo" class="things-to-do">
+      <li id="toDo" class="to-do-item complete">
+        <div class="checkbox">
+          <input type="checkbox" id="checkBtn" class="check-btn" aria-label="checkbox">
+          <label for="checkBtn" class="check-btn-style checked"></label>
+        </div>
+        <span id="toDoText" class="to-do-text"></span>
+        <span class="deadline">Deadline:</span>
+        <button id="deleteBtn" class="delete-btn">Delete</button>
+      </li>
+    </ul>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
 </html>
